@@ -26,14 +26,14 @@ app.get("/api/hello", function (req, res) {
 app.get("/api/:timeStamp", (req, res) => {
   let timeStamp = req.params.timeStamp;
   //checks if it has a -
-  console.log(timeStamp);
   if (!timeStamp.match(/-/g)) {
     timeStamp = +timeStamp; //converts this into a number, so that our apiDate assignment can be processed correctly
     console.log(timeStamp);
   }
   let apiDate = new Date(timeStamp);
-  console.log("apiDate: " + apiDate);
-
+  if (apiDate.toUTCString == "Invalid Date") {
+    res.json({ error: apiDate.toUTCString });
+  }
   res.json({ unix: apiDate.valueOf(), utc: apiDate.toUTCString() });
 });
 
