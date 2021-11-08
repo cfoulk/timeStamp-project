@@ -26,7 +26,8 @@ app.get("/api/hello", function (req, res) {
 app.get("/api/:timeStamp", (req, res) => {
   let timeStamp = req.params.timeStamp;
   //checks if it has a -
-  if (!timeStamp.match(/-/g)) {
+  //!timeStamp.match(/-/g)
+  if (parseInt(timeStamp) > 10000) {
     timeStamp = parseInt(timeStamp);
     //timeStamp = +timeStamp; //converts this into a number, so that our apiDate assignment can be processed correctly
   }
