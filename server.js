@@ -23,7 +23,7 @@ app.get("/api/hello", function (req, res) {
   res.json({ greeting: "hello API" });
 });
 
-app.get("/api/:timeStamp", (req, res) => {
+app.get("/api/timestamp/:timeStamp", (req, res) => {
   let timeStamp = req.params.timeStamp;
   //checks if it has a -
   if (!timeStamp.match(/-/g)) {
@@ -35,6 +35,11 @@ app.get("/api/:timeStamp", (req, res) => {
     res.json({ error: apiDate.toUTCString });
   }
   res.json({ unix: apiDate.valueOf(), utc: apiDate.toUTCString() });
+});
+
+app.get("/api/timestamp/", (req, res) => {
+  let date = new Date();
+  res.json({ unix: date.valueOf(), utc: date.toUTCString() });
 });
 
 // listen for requests :)
