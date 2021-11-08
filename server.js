@@ -28,6 +28,7 @@ app.get("/api/:timeStamp", (req, res) => {
   //checks if it has a -
   //!timeStamp.match(/-/g)
   if (parseInt(timeStamp) > 10000) {
+    //this works because December 17, 1995 03:24:00 is a potential new Date(timestamp) test case since they require all
     timeStamp = parseInt(timeStamp);
     //timeStamp = +timeStamp; //converts this into a number, so that our apiDate assignment can be processed correctly
   }
